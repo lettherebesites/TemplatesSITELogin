@@ -1,0 +1,120 @@
+{% extends 'TemplatesSITELogin/Bootstrap/base.html.twig' %}
+{% block title %}Login | Let There Be Sites{% endblock %}
+{% block description %}Login to your account{% endblock %}
+{% block keywords %}{% endblock %}
+{% block body_container %}
+    <body class="fixed-header ">
+    <div class="login-wrapper ">
+        <!-- START Login Background Pic Wrapper-->
+        <div class="bg-pic">
+            <!-- START Background Pic-->
+            <img src="{{ asset('theme/ltbssuite_1/assets/img/bg_signin.jpg', 'cdn') }}" data-src="{{ asset('theme/ltbssuite_1/assets/img/bg_signin.jpg', 'cdn') }}" data-src-retina="{{ asset('theme/ltbssuite_1/assets/img/bg_signin.jpg', 'cdn') }}" alt="" class="lazy" style="opacity:.8; margin-left: -120px;">
+            <!-- END Background Pic-->
+            <!-- START Background Caption-->
+            <div class="bg-caption pull-bottom sm-pull-bottom text-white p-l-20 m-b-20">
+                <blockquote><h3 class="semi-bold text-white">Innovation distinguishes between a leader and a follower</h3></blockquote>
+                <h3 class="semi-bold text-white p-l-20 no-margin">Steve Jobs</h3>
+            </div>
+            <!-- END Background Caption-->
+        </div>
+        <!-- END Login Background Pic Wrapper-->
+        <!-- START Login Right Container-->
+        <div class="login-container bg-white">
+            <div class="p-l-50 m-l-20 p-r-50 m-r-20 sm-p-l-15 sm-p-r-15 sm-p-t-40" style="padding-top: 100px; margin-top: 100px;">
+                <img class="lazy p-t-80" src="{{ asset('assets/img/let-there-be-sites-250x63.png', 'cdn') }}" alt="logo" data-src="{{ asset('assets/img/ltbs-40.png') }}" data-src-retina="{{ asset('assets/img/let-there-be-sites-250x63.png', 'cdn') }}" width="125" height="32">
+                <p class="p-t-35"><a href="{{ path( register_route, app.request.query.all) }}">New User?</a><a href="{{ path( forgot_route, app.request.query.all) }}" class="pull-right">Forgot Password?</a></p>
+                <!-- START Login Form -->
+                <form action="{{ path(login_route, app.request.query.all) }}" id="form-login" class="p-t-15" role="form" method="POST">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+                    <!-- START Form Control-->
+                    <div class="form-group form-group-default">
+                        <label>Login</label>
+                        <div class="controls">
+                            <input class="form-control" type="text" placeholder="{{ security.login.username|default('Username')|trans }}" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" required>
+                        </div>
+                    </div>
+                    <!-- END Form Control-->
+                    <!-- START Form Control-->
+                    <div class="form-group form-group-default">
+                        <label>Password</label>
+                        <div class="controls">
+                            <input class="form-control" type="password" placeholder="{{ security.login.password|default('Password')|trans }}" id="password" name="_password" required="required" autocomplete="current-password">
+                        </div>
+                    </div>
+                    <!-- START Form Control-->
+                    <div class="col-md-6 no-padding sm-p-l-10">
+                        <div class="checkbox ">
+                            <input name="_remember_me" type="checkbox" value="1" id="checkbox1">
+                            <label for="checkbox1">{{ security.login.remember_me|default('Remember Me?')|trans }}</label>
+                        </div>
+                    </div>
+                    <!-- END Form Control-->
+                    <button class="btn btn-primary btn-cons m-t-10" type="submit"  id="_submit" name="_submit">{{ security.login.submit|default('Submit')|trans }}</button>
+                </form>
+                <!--END Login Form-->
+                <div class="pull-bottom sm-pull-bottom">
+                    <div class="m-b-30 p-r-80 sm-m-t-20 sm-p-r-15 sm-p-b-20 clearfix">
+                        <div class="col-sm-3 col-md-2 no-padding">
+
+                        </div>
+                        <div class="col-sm-9 no-padding m-t-10">
+                            <p>
+                                <small>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END Login Right Container-->
+    </div>
+    <!-- BEGIN VENDOR JS -->
+    {% block javascripts %}
+        <script src="{{ asset('assets/plugins/feather-icons/feather.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/pace/pace.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/jquery/jquery-3.2.1.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/modernizr.custom.js', 'ltbssuite') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/jquery-ui/jquery-ui.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/popper/umd/popper.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/jquery/jquery-easy.js', 'ltbssuite') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/jquery-unveil/jquery.unveil.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/jquery-ios-list/jquery.ioslist.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/jquery-actual/jquery.actual.min.js', 'ltbssuite') }}"></script>
+        <script src="{{ asset('assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js', 'ltbssuite') }}"></script>
+        <script src="{{ asset('assets/plugins/jquery-validation/js/jquery.validate.min.js', 'ltbssuite') }}"></script>
+        <script src="{{ asset('assets/plugins/select2/js/select2.full.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/classie/classie.js', 'ltbssuite') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/switchery/js/switchery.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+        <!-- END VENDOR JS -->
+        <!-- BEGIN CORE TEMPLATE JS -->
+        <!-- BEGIN CORE TEMPLATE JS -->
+        <script src="{{ asset('pages/js/pages.js', 'ltbssuite') }}"></script>
+        <!-- END CORE TEMPLATE JS -->
+        <!-- BEGIN PAGE LEVEL JS -->
+        <script src="{{ asset('assets/js/scripts.js', 'ltbssuite') }}" type="text/javascript"></script>
+        <!-- END PAGE LEVEL JS -->
+        <script>
+            {% for type, messages in app.flashes %}
+            {% for msg in messages %}
+            $('.login-wrapper').pgNotification({
+                style: 'flip',
+                message: '{{ msg }}',
+                position: 'top-right',
+                timeout: 2500,
+                type: '{{ type }}'
+            }).show();
+            {% endfor %}
+            {% endfor %}
+            $(function()
+            {
+                $('#form-login').validate()
+            })
+        </script>
+    {% endblock %}
+    </body>
+{% endblock %}

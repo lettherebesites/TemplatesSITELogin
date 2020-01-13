@@ -1,0 +1,18 @@
+{% extends 'TemplatesSITELogin/Bootstrap/base.html.twig' %}
+{% block title %}Confirmed Account ! | Let There Be Sites{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block body_container %}
+    <body class="fixed-header error-page">
+        <div class="d-flex justify-content-center full-height full-width align-items-center">
+            <div class="error-container text-center">
+                <h1 class="error-number">Account Confirmed!</h1>
+                <h2 class="semi-bold">You should <a href="{{ path(login_route) }}">login now</a></h2>
+            </div>
+        </div>
+        {%  block javascripts %}
+            {{ parent() }}
+        {% endblock %}
+    </body>
+<!-- END PAGE CONTAINER -->
+{% endblock %}

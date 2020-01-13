@@ -1,0 +1,68 @@
+{% extends 'TemplatesSITELogin/Bootstrap/base.html.twig' %}
+{% block title %}Resend Confirmation | Let There Be Sites{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block body_container %}
+<body class="fixed-header error-page">
+    <div class="d-flex justify-content-center full-height full-width align-items-center">
+        <div class="error-container text-center">
+            <h2 class="semi-bold">Resend Email Confirmation</h2>
+            <div class="error-container-innner text-center">
+                <form method="post" class="error-form">
+                    <div class=" transparent text-left">
+                        <div class="form-group form-group-default input-group">
+                            <div class="form-input-group">
+                                <label>Enter email associated with your account.</label>
+                                <input type="text" id="user_username" name="username" required="required" class="form-control" />
+                            </div>
+                            <div class="input-group-append">
+                                <button class="btn btn-complete btn-outline-secondary" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+{%  block javascripts %}
+    <script src="{{ asset('assets/plugins/feather-icons/feather.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/plugins/pace/pace.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/plugins/jquery/jquery-3.2.1.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/plugins/modernizr.custom.js', 'ltbssuite') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/plugins/jquery-ui/jquery-ui.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/plugins/popper/umd/popper.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/plugins/jquery/jquery-easy.js', 'ltbssuite') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/plugins/jquery-unveil/jquery.unveil.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/plugins/jquery-ios-list/jquery.ioslist.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/plugins/jquery-actual/jquery.actual.min.js', 'ltbssuite') }}"></script>
+    <script src="{{ asset('assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js', 'ltbssuite') }}"></script>
+    <script src="{{ asset('assets/plugins/jquery-validation/js/jquery.validate.min.js', 'ltbssuite') }}"></script>
+    <script src="{{ asset('assets/plugins/select2/js/select2.full.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/plugins/classie/classie.js', 'ltbssuite') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/plugins/switchery/js/switchery.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+    <!-- END VENDOR JS -->
+    <!-- BEGIN CORE TEMPLATE JS -->
+    <!-- BEGIN CORE TEMPLATE JS -->
+    <script src="{{ asset('pages/js/pages.js', 'ltbssuite') }}"></script>
+    <!-- END CORE TEMPLATE JS -->
+    <!-- BEGIN PAGE LEVEL JS -->
+    <script src="{{ asset('assets/js/scripts.js', 'ltbssuite') }}" type="text/javascript"></script>
+    <!-- END PAGE LEVEL JS -->
+    <script>
+        {% for type, messages in app.flashes %}
+        {% for msg in messages %}
+        $('.fixed-header').pgNotification({
+            style: 'flip',
+            message: '{{ msg }}',
+            position: 'top-left',
+            timeout: 3000,
+            type: '{{ type }}'
+        }).show();
+        {% endfor %}
+        {% endfor %}
+    </script>
+{% endblock %}
+<!-- END PAGE CONTAINER -->
+{% endblock %}

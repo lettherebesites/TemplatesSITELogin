@@ -1,0 +1,32 @@
+{% extends 'TemplatesSITELogin/Bootstrap/base.html.twig' %}
+{% block title %}Confirm Your Account | Let There Be Sites{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block body_container %}
+<body class="fixed-header error-page">
+    <div class="d-flex justify-content-center full-height full-width align-items-center">
+        <div class="error-container text-center">
+            <h2 class="semi-bold">Confirm Account</h2>
+            <div class="error-container-innner text-center">
+                <form class="error-form">
+                    <div class=" transparent text-left">
+                        <div class="form-group form-group-default input-group">
+                            <div class="form-input-group">
+                                <label>Enter the code we texted you.</label>
+                                <input class="form-control" placeholder="Enter Code" type="text">
+                            </div>
+                            <div class="input-group-addon">
+                                <span class="pg-search"></span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {%  block javascripts %}
+        {{ parent() }}
+    {% endblock %}
+</body>
+<!-- END PAGE CONTAINER -->
+{% endblock %}
