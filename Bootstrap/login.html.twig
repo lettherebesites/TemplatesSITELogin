@@ -8,7 +8,6 @@
         <!-- START Login Background Pic Wrapper-->
         <div class="bg-pic">
             <!-- START Background Pic-->
-            <img src="{{ asset('theme/ltbssuite_1/assets/img/bg_signin.jpg', 'cdn') }}" data-src="{{ asset('theme/ltbssuite_1/assets/img/bg_signin.jpg', 'cdn') }}" data-src-retina="{{ asset('theme/ltbssuite_1/assets/img/bg_signin.jpg', 'cdn') }}" alt="" class="lazy" style="opacity:.8; margin-left: -120px;">
             <!-- END Background Pic-->
             <!-- START Background Caption-->
             <div class="bg-caption pull-bottom sm-pull-bottom text-white p-l-20 m-b-20">
@@ -21,7 +20,6 @@
         <!-- START Login Right Container-->
         <div class="login-container bg-white">
             <div class="p-l-50 m-l-20 p-r-50 m-r-20 sm-p-l-15 sm-p-r-15 sm-p-t-40" style="padding-top: 100px; margin-top: 100px;">
-                <img class="lazy p-t-80" src="{{ asset('assets/img/let-there-be-sites-250x63.png', 'cdn') }}" alt="logo" data-src="{{ asset('assets/img/ltbs-40.png') }}" data-src-retina="{{ asset('assets/img/let-there-be-sites-250x63.png', 'cdn') }}" width="125" height="32">
                 <p class="p-t-35"><a href="{{ path( register_route, app.request.query.all) }}">New User?</a><a href="{{ path( forgot_route, app.request.query.all) }}" class="pull-right">Forgot Password?</a></p>
                 <!-- START Login Form -->
                 <form action="{{ path(login_route, app.request.query.all) }}" id="form-login" class="p-t-15" role="form" method="POST">
@@ -72,31 +70,13 @@
         </div>
         <!-- END Login Right Container-->
     </div>
-    <!-- BEGIN VENDOR JS -->
     {% block javascripts %}
-        <script src="{{ asset('assets/plugins/feather-icons/feather.min.js', 'ltbssuite') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/pace/pace.min.js', 'ltbssuite') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/jquery/jquery-3.2.1.min.js', 'ltbssuite') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/modernizr.custom.js', 'ltbssuite') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/jquery-ui/jquery-ui.min.js', 'ltbssuite') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/popper/umd/popper.min.js', 'ltbssuite') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js', 'ltbssuite') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/jquery/jquery-easy.js', 'ltbssuite') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/jquery-unveil/jquery.unveil.min.js', 'ltbssuite') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/jquery-ios-list/jquery.ioslist.min.js', 'ltbssuite') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/jquery-actual/jquery.actual.min.js', 'ltbssuite') }}"></script>
-        <script src="{{ asset('assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js', 'ltbssuite') }}"></script>
-        <script src="{{ asset('assets/plugins/jquery-validation/js/jquery.validate.min.js', 'ltbssuite') }}"></script>
-        <script src="{{ asset('assets/plugins/select2/js/select2.full.min.js', 'ltbssuite') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/classie/classie.js', 'ltbssuite') }}" type="text/javascript"></script>
-        <script src="{{ asset('assets/plugins/switchery/js/switchery.min.js', 'ltbssuite') }}" type="text/javascript"></script>
+        <!-- BEGIN VENDOR JS -->
         <!-- END VENDOR JS -->
         <!-- BEGIN CORE TEMPLATE JS -->
         <!-- BEGIN CORE TEMPLATE JS -->
-        <script src="{{ asset('pages/js/pages.js', 'ltbssuite') }}"></script>
         <!-- END CORE TEMPLATE JS -->
         <!-- BEGIN PAGE LEVEL JS -->
-        <script src="{{ asset('assets/js/scripts.js', 'ltbssuite') }}" type="text/javascript"></script>
         <!-- END PAGE LEVEL JS -->
         <script>
             {% for type, messages in app.flashes %}
