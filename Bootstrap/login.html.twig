@@ -3,6 +3,15 @@
 {% block stylesheets %}
     {{ parent() }}
     <style>
+        .centered-container{
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #f5f5f5;
+        }
         .form-signin {
             width: 100%;
             max-width: 330px;
@@ -37,25 +46,27 @@
 {% block description %}Login to your account{% endblock %}
 {% block keywords %}{% endblock %}
 {% block body %}
-    <form action="{{ path(login_route, app.request.query.all) }}" id="form-login" class="form-signin p-t-15" role="form" method="POST">
-        <img class="mb-4" src="{{config.logo}}" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Login</h1>
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
-        <label for="login_username" class="sr-only">Username</label>
-        <input type="text" id="username" class="form-control" placeholder="{{ security.login.username|default('Username')|trans }}" name="_username" value="{{ last_username }}" required="required" autocomplete="username" autofocus>
-        <label for="login_password" class="sr-only">Password</label>
-        <input type="password" id="password" class="form-control" placeholder="{{ security.login.password|default('Password')|trans }}" name="_password" required="required" autocomplete="current-password">
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me" value="1" id="checkbox1"> {{ security.login.remember_me|default('Remember Me?')|trans }}
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block"  type="submit"  id="_submit" name="_submit">{{ security.login.submit|default('Log In')|trans }}</button>
-        <p class="p-t-35"><a href="{{ path( register_route, app.request.query.all) }}">New User?</a><a href="{{ path( forgot_route, app.request.query.all) }}" class="pull-right">Forgot Password?</a></p>
-        <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-    </form>
+    <div class="centered-container">
+        <form action="{{ path(login_route, app.request.query.all) }}" id="form-login" class="form-signin p-t-15" role="form" method="POST">
+            <img class="mb-4" src="{{config.logo}}" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+            <label for="login_username" class="sr-only">Username</label>
+            <input type="text" id="username" class="form-control" placeholder="{{ security.login.username|default('Username')|trans }}" name="_username" value="{{ last_username }}" required="required" autocomplete="username" autofocus>
+            <label for="login_password" class="sr-only">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="{{ security.login.password|default('Password')|trans }}" name="_password" required="required" autocomplete="current-password">
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me" value="1" id="checkbox1"> {{ security.login.remember_me|default('Remember Me?')|trans }}
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block"  type="submit"  id="_submit" name="_submit">{{ security.login.submit|default('Log In')|trans }}</button>
+            <p class="mt-5 mb-3 text-muted"><a href="{{ path( register_route, app.request.query.all) }}">New User?</a><a href="{{ path( forgot_route, app.request.query.all) }}" class="pull-right">Forgot Password?</a></p>
+            &copy; 2017-2018</p>
+        </form>
+    </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
