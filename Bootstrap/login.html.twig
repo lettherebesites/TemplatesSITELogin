@@ -276,8 +276,8 @@
 
             <!-- Icon -->
             <div class="fadeIn first">
-                <img src="https://www.b-cube.in/wp-content/uploads/2014/05/aditya-300x177.jpg" id="icon" alt="User Icon" />
-                <h1>Aditya News</h1>
+                <img src="" id="icon" alt="User Icon" />
+                <h1>Login</h1>
             </div>
 
             <!-- Login Form -->
@@ -289,7 +289,7 @@
                 <label>Username</label>
                 <input class="form-control fadeIn second" type="text" placeholder="{{ security.login.username|default('Username')|trans }}" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" required>
                 <label>Password</label>
-                <input type="text" id="login" class="" name="login" placeholder="username"><input class="form-control" type="password" placeholder="{{ security.login.password|default('Password')|trans }}" id="password" name="_password" required="required" autocomplete="current-password">
+                <input class="form-control fadeIn third" type="password" placeholder="{{ security.login.password|default('Password')|trans }}" id="password" name="_password" required="required" autocomplete="current-password">
                 <div class="checkbox ">
                     <input name="_remember_me" type="checkbox" value="1" id="checkbox1">
                     <label for="checkbox1">{{ security.login.remember_me|default('Remember Me?')|trans }}</label>
