@@ -1,4 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block title %}{{ meta.title }}{% endblock %}
 {% block body_container %}
+    {% block body %}{{ parent() }}{% endblock %}
+    {% block javascripts %}{{ parent() }}{% endblock %}
 {% endblock %}
