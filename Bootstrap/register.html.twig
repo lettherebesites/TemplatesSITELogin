@@ -47,7 +47,7 @@
         }
     </style>
 {% endblock %}
-{% block description %}Create an accountt{% endblock %}
+{% block description %}Create an account{% endblock %}
 {% block body %}
     <div class="centered-container">
         {{ form_start(form, {'method': 'post', 'action': path(register_route), 'attr': {'class': 'p-t-15', 'id': 'form-register', 'role': 'form'}}) }}
@@ -104,7 +104,6 @@
          </form>
     </div>
 {% endblock %}
-<!-- BEGIN VENDOR JS -->
 {% block javascripts %}
     {{ parent() }}
     <script>
