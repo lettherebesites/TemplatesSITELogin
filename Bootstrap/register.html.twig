@@ -50,8 +50,7 @@
 {% block description %}Create an account{% endblock %}
 {% block body %}
     <div class="centered-container">
-        {{ form_start(form, {'method': 'post', 'action': path(register_route), 'attr': {'class': 'p-t-15', 'id': 'form-register', 'role': 'form'}}) }}
-        <form action="{{ path(login_route, app.request.query.all) }}" id="form-login" class="form-signin p-t-15" role="form" method="POST">
+        {{ form_start(form, {'method': 'post', 'action': path(register_route), 'attr': {'class': 'form-signin p-t-15 signin', 'id': 'form-register', 'role': 'form'}}) }}
             <img class="mb-4" src="{{config.logo}}" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Login</h1>
             {% if error %}
