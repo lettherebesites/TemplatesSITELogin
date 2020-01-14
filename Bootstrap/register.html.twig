@@ -1,19 +1,64 @@
 {% extends 'TemplatesSITELogin/Bootstrap/base.html.twig' %}
-{% block title %}Register | Let There Be Sites{% endblock %}
-{% block description %}Create an account and go from zero to online in no time.{% endblock %}
-{% block keywords %}{% endblock %}
-{% block body_container %}
-    <body class="fixed-header full-height" style="background-image: url('{{ asset('theme/ltbssuite_1/assets/img/bg_signup.jpg', 'cdn') }}'); background-position: center;background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
-    <div class="register-container full-height sm-p-t-30">
-        <div class="d-flex justify-content-center flex-column full-height ">
-            <img src="{{ asset('assets/img/let-there-be-sites-250x63.png', 'cdn') }}" alt="logo" data-src="{{ asset('assets/img/let-there-be-sites-250x63.png', 'cdn') }}" data-src-retina="{{ asset('assets/img/let-there-be-sites-250x63.png', 'cdn') }}" width="78" height="22">
-            <h3>The first step to your new beautiful site.</h3>
-            <a class="pull-right text-right" href="{{ path( login_route ) }}">Already a member? Login</a>
-
-            {{ form_start(form, {'method': 'post', 'action': path(register_route), 'attr': {'class': 'p-t-15', 'id': 'form-register', 'role': 'form'}}) }}
+{% block title %}Register{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        .centered-container{
+            height: 100%;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: auto;
+        }
+        .form-signin .checkbox {
+            font-weight: 400;
+        }
+        .form-signin .form-control {
+            position: relative;
+            box-sizing: border-box;
+            height: auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .form-signin .form-control:focus {
+            z-index: 2;
+        }
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    </style>
+{% endblock %}
+{% block description %}Create an accountt{% endblock %}
+{% block body %}
+    <div class="centered-container">
+        {{ form_start(form, {'method': 'post', 'action': path(register_route), 'attr': {'class': 'p-t-15', 'id': 'form-register', 'role': 'form'}}) }}
+        <form action="{{ path(login_route, app.request.query.all) }}" id="form-login" class="form-signin p-t-15" role="form" method="POST">
+            <img class="mb-4" src="{{config.logo}}" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Login</h1>
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
+            <a class="pull-right text-right" href="{{ path( login_route ) }}">Already a member? Login</a>
+            <br />
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group form-group-default">
@@ -55,30 +100,28 @@
             </div>
             {{ form_widget(form._token) }}
             <button class="btn btn-primary btn-block m-t-10" type="submit">Create a new account</button>
-            {{ form_end(form, {'render_rest': false}) }}
-        </div>
+        {{ form_end(form, {'render_rest': false}) }}
+         </form>
     </div>
+{% endblock %}
+<!-- BEGIN VENDOR JS -->
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function() {
+            $('#form-register').validate();
 
-    <!-- BEGIN VENDOR JS -->
-    {% block javascripts %}
-        {{ parent() }}
-        <script>
-            $(function() {
-                $('#form-register').validate();
-
-                $('#{{ form.plainPassword.first.vars.id }}').rules( 'add', {
-                    required: true,
-                    minlength: 8,
-                });
-
-                $('#{{ form.plainPassword.second.vars.id }}').rules( 'add', {
-                    equalTo: "#{{ form.plainPassword.first.vars.id }}",
-                    messages: {
-                        equalTo: "Sorry this doesn't match your password.",
-                    }
-                });
+            $('#{{ form.plainPassword.first.vars.id }}').rules( 'add', {
+                required: true,
+                minlength: 8,
             });
-        </script>
-    {% endblock %}
-    </body>
+
+            $('#{{ form.plainPassword.second.vars.id }}').rules( 'add', {
+                equalTo: "#{{ form.plainPassword.first.vars.id }}",
+                messages: {
+                    equalTo: "Sorry this doesn't match your password.",
+                }
+            });
+        });
+    </script>
 {% endblock %}
