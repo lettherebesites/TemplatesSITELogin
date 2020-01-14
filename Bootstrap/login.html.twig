@@ -57,6 +57,8 @@
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
+            <a href="{{ path( register_route, app.request.query.all) }}" class="float-left">New User?</a><a href="{{ path( forgot_route, app.request.query.all) }}" class="float-right">Forgot Password?</a>
+
             <label for="login_username" class="sr-only">Username</label>
             <input type="text" id="username" class="form-control" placeholder="{{ security.login.username|default('Username')|trans }}" name="_username" value="{{ last_username }}" required="required" autocomplete="username" autofocus>
             <label for="login_password" class="sr-only">Password</label>
@@ -68,7 +70,6 @@
             </div>
             <button class="btn btn-lg btn-primary btn-block"  type="submit"  id="_submit" name="_submit">{{ security.login.submit|default('Log In')|trans }}</button>
             <p class="mt-5 mb-3 text-muted">
-                <a href="{{ path( register_route, app.request.query.all) }}" class="float-left">New User?</a><a href="{{ path( forgot_route, app.request.query.all) }}" class="float-right">Forgot Password?</a>
                 <br class="clear"/>
             &copy; {{ "now"| date("Y") }}
             </p>
