@@ -52,7 +52,7 @@
     <div class="centered-container">
         {{ form_start(form, {'method': 'post', 'action': path(register_route), 'attr': {'class': 'form-signin p-t-15 signin', 'id': 'form-register', 'role': 'form'}}) }}
             <img class="mb-4" src="{{config.logo}}" alt="" width="72" height="72">
-            <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+            <h1 class="h3 mb-3 font-weight-normal">Register</h1>
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
@@ -60,7 +60,7 @@
             <br />
             <div class="row">
                 <div class="col-md-12">
-                    <div class="form-group form-group-default">
+                    <div class="form-group form-group-default text-left">
                         {{ form_label(form.username) }}
                         {{ form_widget(form.username) }}
                     </div>
@@ -69,7 +69,7 @@
             <hr>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="form-group form-group-default">
+                    <div class="form-group form-group-default text-left">
                         {{ form_label(form.plainPassword.first) }}
                         {{ form_widget(form.plainPassword.first) }}
                     </div>
@@ -77,17 +77,17 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="form-group form-group-default">
+                    <div class="form-group form-group-default text-left">
                         {{ form_label(form.plainPassword.second) }}
                         {{ form_widget(form.plainPassword.second) }}
                     </div>
                 </div>
             </div>
             <div class="row m-t-10">
-                <div class="col-lg-11 p-l-5">
-                    <h4 class="text-white"><small>By signing up, you agree to the <a href="" class="text-warning">our Terms and Conditions</a> and <a href="" class="text-warning">Privacy Policy</a>.</small></h4>
+                <div class="col-lg-10">
+                    <h4><small>By signing up, you agree to the <a href="" class="text-warning">our Terms and Conditions</a> and <a href="" class="text-warning">Privacy Policy</a>.</small></h4>
                 </div>
-                <div class="col-lg-1 p-r-5">
+                <div class="col-lg-2">
                     <div class="checkbox check-warning">
                         <input id="registration_form_termsAccepted" name="registration_form[termsAccepted]" required="required" value="1" aria-required="true" type="checkbox">
                         <label for="registration_form_termsAccepted"></label>
