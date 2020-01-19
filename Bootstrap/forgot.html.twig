@@ -5,14 +5,11 @@
 {% block body %}
     <div class="centered-container">
         <form method="post" class="form-signin p-t-15">
-            <div class=" transparent text-left">
-                <div class="form-group form-group-default input-group">
-                    <div class="form-input-group">
-                        <label>Enter email associated with your account.</label>
-                        <input type="text" id="user_username" name="username" required="required" class="form-control" />
-                    </div>
+            <div class="transparent text-left">
+                <div class="input-group">
+                    <input id="user_username" name="username" required="required" type="text" class="form-control" placeholder="Enter email associated with your account." aria-label="Enter email associated with your account." aria-describedby="button-addon">
                     <div class="input-group-append">
-                        <button class="btn btn-complete btn-outline-secondary" type="submit">Submit</button>
+                        <button class="btn btn-complete btn-outline-secondary" type="button" id="button-addon">Submit</button>
                     </div>
                 </div>
             </div>
