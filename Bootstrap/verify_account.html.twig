@@ -1,5 +1,5 @@
 {% extends 'TemplatesSITELogin/Bootstrap/base.html.twig' %}
-{% block title %}Check email to confirm account | Let There Be Sites{% endblock %}
+{% block title %}Check email to confirm account{% endblock %}
 {% block description %}{% endblock %}
 {% block keywords %}{% endblock %}
 {% block body_container %}
@@ -9,7 +9,7 @@
             <h1 class="error-number">Check Email</h1>
             {% if display_email %}
             <h2 class="semi-bold">We sent an email to <span class="text-primary"><strong>{{ display_email }}</strong></span> verify your account.</h2>
-                <p class="p-b-10"><a href="#">Request a new email?</a></p>
+                <p class="p-b-10"><a href="{{ path('site_login_forgot') }}">Request a new email?</a></p>
             {% else %}
             {% endif %}
             </div>
