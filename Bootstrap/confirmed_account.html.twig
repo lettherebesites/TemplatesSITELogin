@@ -5,11 +5,7 @@
 {% block body %}
     <div class="centered-container">
         <img class="p-t-15 mb-4" src="{{config.logo}}" alt="" width="72" height="72">
-        <div class="d-flex justify-content-center full-height full-width align-items-center">
-            <div class="error-container text-center">
-                <h1 class="error-number">Account Confirmed!</h1>
-                <h2 class="semi-bold">You should <a href="{{ path(login_route) }}">login now</a></h2>
-            </div>
-        </div>
+        <h1 class="error-number">Account Confirmed!</h1>
+        <h2 class="semi-bold">You should <a href="{{ path(login_route) }}">login now</a></h2>
     </div>
 {% endblock %}
