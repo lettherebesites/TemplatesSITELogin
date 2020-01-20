@@ -6,6 +6,7 @@
 {% block description %}Login to your account{% endblock %}
 {% block keywords %}{% endblock %}
 {% block body %}
+    {{ dump() }}
     <div class="centered-container">
         <form action="{{ path(login_route, app.request.query.all) }}" id="form-login" class="form-signin p-t-15" role="form" method="POST">
             <img class="mb-4" src="{{config.logo}}" alt="" width="72" height="72">
