@@ -6,6 +6,9 @@
         {{ form_start(form, {'method': 'post', 'action': path(register_route), 'attr': {'class': 'form-signin p-t-15 signin', 'id': 'form-register', 'role': 'form'}}) }}
             <img class="mb-4" src="{{config.logo}}" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+            {% for type, messages in app.flashes %}
+                <div class="alert alert-{{ type }}">{{ msg }}</div>
+            {% endfor %}
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}

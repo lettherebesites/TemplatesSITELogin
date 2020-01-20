@@ -10,6 +10,9 @@
         <form action="{{ path(login_route, app.request.query.all) }}" id="form-login" class="form-signin p-t-15" role="form" method="POST">
             <img class="mb-4" src="{{config.logo}}" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+            {% for type, messages in app.flashes %}
+                <div class="alert alert-{{ type }}">{{ msg }}</div>
+            {% endfor %}
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
@@ -30,25 +33,7 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    <!-- BEGIN VENDOR JS -->
-    <!-- END VENDOR JS -->
-    <!-- BEGIN CORE TEMPLATE JS -->
-    <!-- BEGIN CORE TEMPLATE JS -->
-    <!-- END CORE TEMPLATE JS -->
-    <!-- BEGIN PAGE LEVEL JS -->
-    <!-- END PAGE LEVEL JS -->
     <script>
-        {% for type, messages in app.flashes %}
-        {% for msg in messages %}
-        $('.login-wrapper').pgNotification({
-            style: 'flip',
-            message: '{{ msg }}',
-            position: 'top-right',
-            timeout: 2500,
-            type: '{{ type }}'
-        }).show();
-        {% endfor %}
-        {% endfor %}
         $(function()
         {
             $('#form-login').validate()
