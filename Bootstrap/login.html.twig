@@ -10,6 +10,7 @@
     <div class="centered-container">
         <form action="{{ path(login_route, app.request.query.all) }}" id="form-login" class="form-signin p-t-15" role="form" method="POST">
             <img class="mb-4" src="{{config.logo}}" alt="" width="72" height="72">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
             <h1 class="h3 mb-3 font-weight-normal">Login</h1>
             {% for type, messages in app.flashes %}
                 <div class="alert alert-{{ type }}">{{ msg }}</div>
