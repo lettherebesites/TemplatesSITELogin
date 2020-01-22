@@ -1,0 +1,18 @@
+{% extends 'TemplatesSITELogin/Bootstrap/base.html.twig' %}
+{% block title %}Confirm Your Account{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block body %}
+    <div class="centered-container">
+        <form method="post" class="form-signin p-t-15">
+            <img class="p-t-15 mb-4" src="{{config.logo}}" alt="" width="72" height="72">
+            <h2 class="semi-bold">Confirm Account</h2>
+            <div class="input-group">
+                <input id="code" name="code" required="required" type="text" class="form-control" placeholder="Enter the code we texted you." aria-label="Enter the code we texted you." aria-describedby="button-addon">
+                <div class="input-group-append">
+                    <button class="btn btn-complete btn-outline-secondary" type="submit" id="button-addon">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'TemplatesSITELogin/Bootstrap/base.html.twig' %}
+{% block title %}Check Your Email | Forgot Password{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block body %}
+    <div class="centered-container">
+        <form method="post" class="form-signin p-t-15">
+            <img class="p-t-15 mb-4" src="{{config.logo}}" alt="" width="72" height="72">
+            <h1 class="error-number">We just sent you a link to reset your password. Check your email.</h1>
+            <p class="p-b-10"><a href="{{ path('home') }}"><i class="fas fa-home"></i> Go Home</a></p>
+        </form>
+    </div>
+{% endblock %}

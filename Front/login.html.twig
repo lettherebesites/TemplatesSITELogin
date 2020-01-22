@@ -1,0 +1,43 @@
+{% extends 'TemplatesSITELogin/Bootstrap/base.html.twig' %}
+{% block title %}Login{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block description %}Login to your account{% endblock %}
+{% block keywords %}{% endblock %}
+{% block body %}
+    <div class="centered-container">
+        <form action="{{ path(login_route, app.request.query.all) }}" id="form-login" class="form-signin p-t-15" role="form" method="POST">
+            <img class="mb-4" src="{{config.logo}}" alt="" width="72" height="72">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+            <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+            {% for type, messages in app.flashes %}
+                <div class="alert alert-{{ type }}">{{ msg }}</div>
+            {% endfor %}
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+            <a href="{{ path( register_route, app.request.query.all) }}" class="float-left">New User?</a><a href="{{ path( forgot_route, app.request.query.all) }}" class="float-right">Forgot Password?</a>
+            <br />
+            <label for="login_username" class="sr-only">Username</label>
+            <input type="text" id="username" class="form-control" placeholder="{{ security.login.username|default('Username')|trans }}" name="_username" value="{{ last_username }}" required="required" autocomplete="username" autofocus>
+            <label for="login_password" class="sr-only">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="{{ security.login.password|default('Password')|trans }}" name="_password" required="required" autocomplete="current-password">
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me" value="1" id="checkbox1"> {{ security.login.remember_me|default('Remember Me?')|trans }}
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block"  type="submit"  id="_submit" name="_submit">{{ security.login.submit|default('Log In')|trans }}</button>
+        </form>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function()
+        {
+            $('#form-login').validate()
+        })
+    </script>
+{% endblock %}

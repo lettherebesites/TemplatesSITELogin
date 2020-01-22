@@ -1,0 +1,81 @@
+{% extends 'TemplatesSITELogin/Bootstrap/base.html.twig' %}
+{% block title %}Register{% endblock %}
+{% block description %}Create an account{% endblock %}
+{% block body %}
+    <div class="centered-container">
+        {{ form_start(form, {'method': 'post', 'action': path(register_route), 'attr': {'class': 'form-signin p-t-15 signin', 'id': 'form-register', 'role': 'form'}}) }}
+            <img class="mb-4" src="{{config.logo}}" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+            {% for type, messages in app.flashes %}
+                <div class="alert alert-{{ type }}">{{ msg }}</div>
+            {% endfor %}
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+            <a class="pull-right text-right" href="{{ path( login_route ) }}">Already a member? Login</a>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group form-group-default text-left">
+                        {{ form_label(form.username) }}
+                        {{ form_widget(form.username) }}
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group form-group-default text-left">
+                        {{ form_label(form.plainPassword.first) }}
+                        {{ form_widget(form.plainPassword.first) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group form-group-default text-left">
+                        {{ form_label(form.plainPassword.second) }}
+                        {{ form_widget(form.plainPassword.second) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row m-t-10">
+                <div class="col-lg-10">
+                    <h4 class="text-left"><small>By signing up, you agree to the <a href="" class="text-warning">our Terms and Conditions</a> and <a href="" class="text-warning">Privacy Policy</a>.</small></h4>
+                </div>
+                <div class="col-lg-2">
+                    <div class="checkbox check-warning">
+                        <input id="registration_form_termsAccepted" name="registration_form[termsAccepted]" required="required" value="1" aria-required="true" type="checkbox">
+                        <label for="registration_form_termsAccepted"></label>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-6 text-right">
+                <a href="#" class="text-info small">Help? Contact Support</a>
+               </div> -->
+            </div>
+            {{ form_widget(form._token) }}
+            <button class="btn btn-primary btn-block m-t-10" type="submit">Create a new account</button>
+        {{ form_end(form, {'render_rest': false}) }}
+         </form>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function() {
+            $('#form-register').validate();
+
+            $('#{{ form.plainPassword.first.vars.id }}').rules( 'add', {
+                required: true,
+                minlength: 8,
+            });
+
+            $('#{{ form.plainPassword.second.vars.id }}').rules( 'add', {
+                equalTo: "#{{ form.plainPassword.first.vars.id }}",
+                messages: {
+                    equalTo: "Sorry this doesn't match your password.",
+                }
+            });
+        });
+    </script>
+{% endblock %}
