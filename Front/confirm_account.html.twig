@@ -1,5 +1,9 @@
-{% extends 'TemplatesSITELogin/Front/base.html.twig' %}
-{% block title %}Confirm Your Account{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('login_confirm_account', null, 'frontThemeConfig') }}
+{% endblock %}
+{% block title %}{% endblock %}
 {% block description %}{% endblock %}
 {% block keywords %}{% endblock %}
 {% block body %}

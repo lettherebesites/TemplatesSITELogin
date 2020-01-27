@@ -155,34 +155,43 @@
 
             <div class="container">
                 <div class="row no-gutters">
-                    <div class="col-md-8 col-lg-7 col-xl-6 offset-md-2 offset-lg-2 offset-xl-3 space-3 space-lg-0">
+                    <div class="col-md-8 col-lg-7 col-xl-6 offset-md-2 offset-lg-2 offset-xl-3 space-3 space-lg-0 text-left">
                         <!-- Form -->
                         {{ form_start(form, {'method': 'post', 'action': path(register_route), 'attr': {'class': 'js-validate mt-5', 'id': 'form-register', 'role': 'form'}}) }}
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                        {% for type, messages in app.flashes %}
+                            {% for msg in messages %}
+                                <div class="alert alert-{{ type }}">{{ msg }}</div>
+                            {% endfor %}
+                        {% endfor %}
+                        {{ form_widget(form._token) }}
                         <!-- Title -->
                         <div class="mb-7">
                             <h1 class="h3 text-primary font-weight-normal mb-0">{{t.login_register.welcome_prefix | default("Welcome to")}} <span class="font-weight-semi-bold">{{ t.app.title | default('Our App') }}</span></h1>
-                            <p>{{ t.login_register.help_text }}</p>
+                            <p>{{ t.login_register.help_text| default('Start your account with us today!') }}</p>
                         </div>
                         <!-- End Title -->
 
                         <!-- Form Group -->
                         <div class="js-form-message form-group">
                             {{ form_label(form.username, null, {"label_attr": {"class": "form-label"}}) }}
-                            {{ form_widget(form.username, { "aria": {"label":"Username/Email"}, "placeholder":"Username/Email", "required":"required", "data" : { "msg":"Please enter a valid email address.", "error-class":"u-has-error", "success-class":"u-has-success"}}) }}
+                            {{ form_widget(form.username, { "attr":{ "aria-label":"Username/Email", "placeholder":"Username/Email", "required":"required", "data-msg":"Please enter a valid email address.", "data-error-class":"u-has-error", "data-success-class":"u-has-success"}}) }}
                         </div>
                         <!-- End Form Group -->
 
                         <!-- Form Group -->
                         <div class="js-form-message form-group">
                             {{ form_label(form.plainPassword.first, null, {"label_attr": {"class": "form-label"}})  }}
-                            {{ form_widget(form.plainPassword.first, { "aria": {"label":"********"}, "placeholder":"********", "required":"required", "data" : { "msg":"Your password is invalid. Please try again.", "error-class":"u-has-error", "success-class":"u-has-success"}}) }}
+                            {{ form_widget(form.plainPassword.first, { "attr":{ "aria-label":"********", "placeholder":"********", "required":"required", "data-msg":"Your password is invalid. Please try again.", "data-error-class":"u-has-error", "data-success-class":"u-has-success"}}) }}
                         </div>
                         <!-- End Form Group -->
 
                         <!-- Form Group -->
                         <div class="js-form-message form-group">
                             {{ form_label(form.plainPassword.second, null, {"label_attr": {"class": "form-label"}})  }}
-                            {{ form_widget(form.plainPassword.second, { "aria": {"label":"********"}, "placeholder":"********", "required":"required", "data" : { "msg":"Password does not match the confirm password.", "error-class":"u-has-error", "success-class":"u-has-success"}}) }}
+                            {{ form_widget(form.plainPassword.second, { "attr":{ "aria-label":"********", "placeholder":"********", "required":"required", "data-msg":"Password does not match the confirm password.", "data-error-class":"u-has-error", "data-success-class":"u-has-success"}}) }}
                         </div>
                         <!-- End Form Group -->
 
@@ -208,8 +217,6 @@
                         </div>
                         <!-- End Checkbox -->
 
-                        {{ form_widget(form._token) }}
-
                         <!-- Button -->
                         <div class="row align-items-center mb-5">
                             <div class="col-5 col-sm-6">
@@ -230,6 +237,7 @@
         </div>
         <!-- End Form -->
     </main>
+    <!-- ========== END MAIN ========== -->
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
