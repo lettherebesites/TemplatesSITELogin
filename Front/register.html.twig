@@ -12,21 +12,22 @@
         <!-- Form -->
         <div class="d-flex align-items-center position-relative height-lg-100vh">
             {{ include('TemplatesSITELogin/Front/_aside.html.twig') }}
+        </div>
 
-            <div class="container">
-                <div class="row no-gutters">
-                    <div class="col-md-8 col-lg-7 col-xl-6 offset-md-2 offset-lg-2 offset-xl-3 space-3 space-lg-0 text-left">
-                        <!-- Form -->
-                        {{ form_start(form, {'method': 'post', 'action': path(register_route), 'attr': {'class': 'js-validate mt-5', 'id': 'form-register', 'role': 'form'}}) }}
-                        {% if error %}
-                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                        {% endif %}
-                        {% for type, messages in app.flashes %}
-                            {% for msg in messages %}
-                                <div class="alert alert-{{ type }}">{{ msg }}</div>
-                            {% endfor %}
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-md-8 col-lg-7 col-xl-6 offset-md-2 offset-lg-2 offset-xl-3 space-3 space-lg-0 text-left">
+                    <!-- Form -->
+                    {{ form_start(form, {'method': 'post', 'action': path(register_route), 'attr': {'class': 'js-validate mt-5', 'id': 'form-register', 'role': 'form'}}) }}
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                    {% for type, messages in app.flashes %}
+                        {% for msg in messages %}
+                            <div class="alert alert-{{ type }}">{{ msg }}</div>
                         {% endfor %}
                         {{ form_widget(form._token) }}
+                    {% endfor %}
                         <!-- Title -->
                         <div class="mb-7">
                             <h1 class="h3 text-primary font-weight-normal mb-0">{{ 'site.login.register.heading_prefix' | trans }} <span class="font-weight-semi-bold">{{ 'global.app.name'|trans }}</span></h1>
@@ -41,68 +42,68 @@
                         </div>
                         <!-- End Form Group -->
 
-                        <!-- Form Group -->
-                        <div class="js-form-message form-group">
-                            {{ form_label(form.plainPassword.first, null, {"label_attr": {"class": "form-label"}})  }}
-                            {{ form_widget(form.plainPassword.first, { "attr":{ "aria-label":"********", "placeholder":"********", "required":"required", "data-msg":"Your password is invalid. Please try again.", "data-error-class":"u-has-error", "data-success-class":"u-has-success"}}) }}
-                        </div>
-                        <!-- End Form Group -->
-
-                        <!-- Form Group -->
-                        <div class="js-form-message form-group">
-                            {{ form_label(form.plainPassword.second, null, {"label_attr": {"class": "form-label"}})  }}
-                            {{ form_widget(form.plainPassword.second, { "attr":{ "aria-label":"********", "placeholder":"********", "required":"required", "data-msg":"Password does not match the confirm password.", "data-error-class":"u-has-error", "data-success-class":"u-has-success"}}) }}
-                        </div>
-                        <!-- End Form Group -->
-
-                        <!-- Checkbox -->
-                        <div class="js-form-message mb-5">
-                            <div class="custom-control custom-checkbox d-flex align-items-center text-muted">
-                                <input type="checkbox" value="1" class="custom-control-input"
-                                       id="registration_form_termsAccepted"
-                                       name="registration_form[termsAccepted]"
-                                       aria-required="true"
-                                       data-msg="Please accept our Terms and Conditions."
-                                       data-error-class="u-has-error"
-                                       data-success-class="u-has-success"
-                                       required="required">
-                                <label class="custom-control-label" for="registration_form_termsAccepted">
-                                    <small>
-                                        I agree to the
-                                        <a class="link-muted" href="../pages/terms.html">{{ 'global.tos.term'| trans }}</a> &amp;
-                                        <a class="link-muted" href="../pages/privacy.html">{{ 'global.privacy.term'|trans}}</a>
-                                    </small>
-                                </label>
-                            </div>
-                        </div>
-                        <!-- End Checkbox -->
-
-                        <!-- Button -->
-                        <div class="row align-items-center mb-5">
-                            <div class="col-5 col-sm-6">
-                                <span class="small text-muted">{{ 'site.login.register.have_account'|trans }}</span>
-                                <a class="small" href="{{ path( login_route ) }}">{{ 'site.login.register.cta_login'|trans }}</a>
-                            </div>
-
-                            <div class="col-7 col-sm-6 text-right">
-                                <button type="submit" class="btn btn-primary transition-3d-hover text-white-hover">{{ 'site.login.register.submit_label'|trans }}</button>
-                            </div>
-                        </div>
-                        <!-- End Button -->
-                        {{ form_end(form, {'render_rest': false}) }}
-                        <!-- End Form -->
+                    <!-- Form Group -->
+                    <div class="js-form-message form-group">
+                        {{ form_label(form.plainPassword.first, null, {"label_attr": {"class": "form-label"}})  }}
+                        {{ form_widget(form.plainPassword.first, { "attr":{ "aria-label":"********", "placeholder":"********", "required":"required", "data-msg":"Your password is invalid. Please try again.", "data-error-class":"u-has-error", "data-success-class":"u-has-success"}}) }}
                     </div>
+                    <!-- End Form Group -->
+
+                    <!-- Form Group -->
+                    <div class="js-form-message form-group">
+                        {{ form_label(form.plainPassword.second, null, {"label_attr": {"class": "form-label"}})  }}
+                        {{ form_widget(form.plainPassword.second, { "attr":{ "aria-label":"********", "placeholder":"********", "required":"required", "data-msg":"Password does not match the confirm password.", "data-error-class":"u-has-error", "data-success-class":"u-has-success"}}) }}
+                    </div>
+                    <!-- End Form Group -->
+                    <!-- Checkbox -->
+                    <div class="js-form-message mb-5">
+                        <div class="custom-control custom-checkbox d-flex align-items-center text-muted">
+                            <input type="checkbox" value="1" class="custom-control-input"
+                                   id="registration_form_termsAccepted"
+                                   name="registration_form[termsAccepted]"
+                                   aria-required="true"
+                                   data-msg="Please accept our Terms and Conditions."
+                                   data-error-class="u-has-error"
+                                   data-success-class="u-has-success"
+                                   required="required">
+                            <label class="custom-control-label" for="registration_form_termsAccepted">
+                                <small>
+                                    I agree to the
+                                    <a class="link-muted" href="../pages/terms.html">{{ 'global.tos.term'| trans }}</a> &amp;
+                                    <a class="link-muted" href="../pages/privacy.html">{{ 'global.privacy.term'|trans}}</a>
+                                </small>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- End Checkbox -->
+
+                    <!-- Button -->
+                    <div class="row align-items-center mb-5">
+                        <div class="col-5 col-sm-6">
+                            <span class="small text-muted">{{ 'site.login.register.have_account'|trans }}</span>
+                            <a class="small" href="{{ path( login_route ) }}">{{ 'site.login.register.cta_login'|trans }}</a>
+                        </div>
+
+                        <div class="col-7 col-sm-6 text-right">
+                            <button type="submit" class="btn btn-primary transition-3d-hover text-white-hover">{{ 'site.login.register.submit_label'|trans }}</button>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- End Button -->
+                    {{ form_end(form, {'render_rest': false}) }}
+                    <!-- End Form -->
                 </div>
             </div>
         </div>
-        <!-- End Form -->
-    </main>
-    <!-- ========== END MAIN ========== -->
+    </div>
+    <!-- End Form -->
+</main>
+<!-- ========== END MAIN ========== -->
 {% endblock %}
 {% block javascripts %}
-    {{ parent() }}
-    {{ encore_entry_script_tags('login_register', null, 'frontThemeConfig') }}
-    <script>
+{{ parent() }}
+{{ encore_entry_script_tags('login_register', null, 'frontThemeConfig') }}
+<script>
         /* JS Plugins Init.  */
         $(function() {
             $('#form-register').validate();
