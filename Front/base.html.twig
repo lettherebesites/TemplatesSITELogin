@@ -1,8 +1,5 @@
 {% extends 'TemplatesSITECore/Front/base.html.twig' %}
 {% block title %}{{ meta.title }}{% endblock %}
-{% block body_container %}
-<body class="text-center">
-    {% block body %}{{ parent() }}{% endblock %}
-    {% block javascripts %}{{ parent() }}{% endblock %}
-</body>
-{% endblock %}
+{% block header %}{{ include('TemplatesSITELogin/Front/_header.html.twig') }}{% endblock %}
+{% block content %}{% endblock %}
+{% block footer %}{{ include('TemplatesSITELogin/Front/_footer.html.twig') }}{% endblock %}
