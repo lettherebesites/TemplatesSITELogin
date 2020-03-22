@@ -1,0 +1,114 @@
+{% extends 'TemplatesSITELogin/Front/base.html.twig' %}
+{% block title %}Login{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+{{ encore_entry_link_tags('login', null, 'frontSimpleThemeConfig') }}
+{% endblock %}
+{% block description %}Login to your account{% endblock %}
+{% block keywords %}{% endblock %}
+{% block header %}{% set dark = true %}{{ parent() }}{% endblock %}
+{% block content %}
+<!-- ========== MAIN ========== -->
+<main id="content" role="main">
+    <!-- Form -->
+    <div class="d-flex align-items-center position-relative height-lg-100vh">
+        {{ include('TemplatesSITELogin/Front/_aside.html.twig') }}
+
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-md-8 col-lg-7 col-xl-6 offset-md-2 offset-lg-2 offset-xl-3 space-3 space-lg-0 text-left">
+                    <!-- Form -->
+                    <form action="{{ path(login_route, app.request.query.all) }}" id="form-login" class="js-validate" role="form" method="POST">
+                        {% for type, messages in app.flashes %}
+                            {% for msg in messages %}
+                                <div class="alert alert-{{ type }}">{{ msg }}</div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+                        <!-- Title -->
+                        <div class="mb-7">
+                            <h2 class="h3 text-primary font-weight-normal mb-0">{{'site.login.login.heading_prefix'|trans}} <span class="font-weight-semi-bold">{{'site.login.login.heading_postfix'|trans}}</span></h2>
+                            <p>{{ 'site.login.login.subheading'|trans }}</p>
+                        </div>
+                        <!-- End Title -->
+
+                        <!-- Form Group -->
+                        <div class="js-form-message form-group">
+                            <label class="form-label" for="login_username">
+                                <span class="d-flex justify-content-between align-items-center">{{ 'global.form.username.label'|trans }}
+                                  <a class="link-muted text-capitalize font-weight-normal" href="{{ path( forgot_route, app.request.query.all) }}">{{ 'site.login.login.forgot'|trans }}</a>
+                                </span>
+                            </label>
+                            <input id="username" type="text" name="_username" value="{{ last_username }}" class="form-control"
+                                   aria-label="{{ 'global.form.username.label'|trans }}"
+                                   autocomplete="username"
+                                   autofocus
+                                   data-msg="Please enter your name."
+                                   data-error-class="u-has-error"
+                                   data-success-class="u-has-success"
+                                   placeholder="{{ 'global.form.username.placeholder'|trans }}"
+                                   required="required">
+                        </div>
+                        <!-- End Form Group -->
+
+                        <!-- Form Group -->
+                        <div class="js-form-message form-group">
+                            <label class="form-label" for="login_password">
+                                {{ 'global.form.password.label'|trans }}
+                            </label>
+                            <input id="login_password" type="password" class="form-control" name="_password"
+                                   aria-invalid="login_password"
+                                   aria-label="{{ 'global.form.password.label'|trans }}"
+                                   autocomplete="current-password"
+                                   placeholder="{{ 'global.form.password.placeholder'|trans }}"
+                                   data-msg="Your password is invalid. Please try again."
+                                   data-error-class="u-has-error"
+                                   data-success-class="u-has-success"
+                                   required="required">
+                        </div>
+                        <!-- End Form Group -->
+
+                        <!-- Checkbox -->
+                        <div class="js-form-message mb-5">
+                            <div class="custom-control custom-checkbox d-flex align-items-center text-muted">
+                                <input type="checkbox" value="1" class="custom-control-input"
+                                       id="_remember_me"
+                                       name="_remember_me"
+                                       aria-required="true">
+                                <label class="custom-control-label" for="_remember_me">
+                                    <small>
+                                        {{ 'site.login.login.remember_me' | trans }}
+                                    </small>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- End Checkbox -->
+
+                        <!-- Button -->
+                        <div class="row align-items-center mb-5">
+                            <div class="col-6">
+                                <span class="small text-muted">{{ 'site.login.login.dont_have_account'|trans }}</span>
+                                <a class="small" href="{{ path( register_route, app.request.query.all) }}">{{ 'site.login.login.cta_register'|trans }}</a>
+                            </div>
+
+                            <div class="col-6 text-right">
+                                <button id="_submit" name="_submit" class="btn btn-primary text-white-hover transition-3d-hover" type="submit">{{ security.login.submit|default('Log In')|trans }}</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- End Login Form -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Form -->
+</main>
+<!-- ========== END MAIN ========== -->
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+{{ encore_entry_script_tags('login', null, 'frontSimpleThemeConfig') }}
+{% endblock %}

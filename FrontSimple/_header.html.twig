@@ -1,0 +1,38 @@
+<!-- ========== HEADER ========== -->
+<header id="header" class="u-header u-header--bg-transparent u-header--abs-top">
+    <div class="u-header__section">
+        <div id="logoAndNav" class="container-fluid">
+            <!-- Nav -->
+            <nav class="navbar navbar-expand u-header__navbar">
+                {% if dark|default(false) %}
+                <!-- White Logo -->
+                <a class="d-none d-lg-flex navbar-brand u-header__navbar-brand u-header__navbar-brand-center u-header__navbar-brand-text-white" href="{{url('home')}}" aria-label="{{ 'global.app.name'|trans }}">
+                    {{include('TemplatesSITECore/Front/_logo_default.html.twig')}}
+                </a>
+                <!-- End White Logo -->
+                {% else %}
+                <!-- Default Logo -->
+                <a class="d-none d-lg-flex navbar-brand u-header__navbar-brand u-header__navbar-brand-center u-header__navbar-brand-text-white" href="{{url('home')}}" aria-label="{{ 'global.app.name'|trans }}">
+                    {{include('TemplatesSITECore/Front/_logo_dark.html.twig')}}
+                </a>
+                <!-- End Default Logo -->
+                {% endif %}
+                <!-- Button -->
+                <div class="ml-auto">
+                    {% if app.request.attributes.get('_route') == "site_login_login" %}
+                        <a class="btn btn-sm btn-primary text-white-hover transition-3d-hover" href="{{ path('site_login_register') }}">
+                            Register
+                        </a>
+                    {% else %}
+                        <a class="btn btn-sm btn-primary text-white-hover transition-3d-hover" href="{{path('site_login_login')}}">
+                            Sign In <i class="fas fa-sign-in-alt"></i>
+                        </a>
+                    {% endif %}
+                </div>
+                <!-- End Button -->
+            </nav>
+            <!-- End Nav -->
+        </div>
+    </div>
+</header>
+<!-- ========== END HEADER ========== -->

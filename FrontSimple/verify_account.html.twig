@@ -1,0 +1,42 @@
+{% extends 'TemplatesSITELogin/Front/base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('login', null, 'frontSimpleThemeConfig') }}
+{% endblock %}
+{% block title %}Check email to confirm account{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block content %}
+    <!-- ========== MAIN ========== -->
+    <main id="content" role="main">
+        <!-- Hero Section -->
+        <div class="d-lg-flex">
+            <div class="container d-lg-flex align-items-lg-center min-height-lg-100vh space-top-4 space-bottom-2 space-lg-0">
+                <div class="w-100 mx-auto text-center">
+                    <!-- SVG Icon -->
+                    <figure id="SVGaccount" class="svg-preloader mb-5">
+                        <img class="js-svg-injector" src="{{ asset('build/Front/svg/illustrations/create-account.svg') }}" alt="{{ 'site.login.verify_account.heading'|trans}}"
+                             data-parent="#SVGaccount" style="max-height: 200px;">
+                    </figure>
+                    <!-- End SVG Icon -->
+
+                    <div class="w-md-80 w-lg-50 text-center mx-md-auto">
+                        <!-- Title -->
+                        <div class="mb-5">
+                            <h1 class="h2 font-weight-normal">{{ 'site.login.verify_account.heading'|trans}}</h1>
+                            <p>{{ 'site.login.verify_account.subheading'|trans({'%display_email%': display_email})}}</p>
+                        </div>
+                        <!-- End Title -->
+                        <a href="{{ path('site_login_forgot') }}" class="btn btn-primary transition-3d-hover text-white-hover" >{{ 'site.login.verify_account.cta_forgot'|trans }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Hero Section -->
+    </main>
+    <!-- ========== END MAIN ========== -->
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+{{ encore_entry_script_tags('login', null, 'frontSimpleThemeConfig') }}
+{% endblock %}

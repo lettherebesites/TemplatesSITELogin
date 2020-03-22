@@ -1,0 +1,59 @@
+{% extends 'TemplatesSITELogin/Front/base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('login', null, 'frontSimpleThemeConfig') }}
+{% endblock %}
+{% block title %}Forgot Password{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block header %}{% set dark = true %}{{ parent() }}{% endblock %}
+{% block content %}
+    <!-- ========== MAIN ========== -->
+    <main id="content" role="main">
+        <!-- Form -->
+        <div class="d-flex align-items-center position-relative height-lg-100vh">
+
+            {{ include('TemplatesSITELogin/Front/_aside.html.twig') }}
+
+            <div class="container">
+                <div class="row no-gutters">
+                    <div class="col-md-8 col-lg-7 col-xl-6 offset-md-2 offset-lg-2 offset-xl-3 space-3 space-lg-0 text-left">
+                        <!-- Form -->
+                        <form method="post" class="js-validate mt-5">
+                            <!-- Title -->
+                            <div class="mb-7">
+                                <h1 class="h3 text-primary font-weight-normal mb-0">{{ 'site.login.forgot.heading_prefix' | trans }} <span class="font-weight-semi-bold">{{ 'site.login.forgot.heading_postfix' | trans }}</span></h1>
+                                <p>{{ 'site.login.forgot.subheading' | trans }}</p>
+                            </div>
+                            <!-- End Title -->
+
+                            <!-- Form Group -->
+                            <div class="js-form-message form-group">
+                                <label class="form-label" for="user_username">{{ 'global.form.username.label' | trans }}</label>
+                                <input id="user_username" name="username" required="required" type="text" class="form-control" placeholder="{{ 'global.form.username.placeholder' | trans }}" aria-label="{{ 'global.form.username.label' | trans }}" required="" data-msg="Please enter your username or email address." data-error-class="u-has-error" data-success-class="u-has-success" aria-required="true" required="required">
+                            </div>
+                            <!-- End Form Group -->
+                            <!-- Button -->
+                            <div class="row align-items-center mb-5">
+                                <div class="col-4 col-sm-6">
+                                    <a class="small link-muted" href="{{ login_url }}">{{ 'site.login.forgot.cta_login' | trans }}</a>
+                                </div>
+
+                                <div class="col-8 col-sm-6 text-right">
+                                    <button type="submit" class="btn btn-primary transition-3d-hover text-white-hover">{{ 'site.login.forgot.submit_label' | trans }}</button>
+                                </div>
+                            </div>
+                            <!-- End Button -->
+                        </form>
+                        <!-- End Form -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- ========== END MAIN ========== -->
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+{{ encore_entry_script_tags('login', null, 'frontSimpleThemeConfig') }}
+{% endblock %}
