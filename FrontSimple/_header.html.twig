@@ -7,13 +7,13 @@
                 {% if dark|default(false) %}
                 <!-- White Logo -->
                 <a class="d-none d-lg-flex navbar-brand u-header__navbar-brand u-header__navbar-brand-center u-header__navbar-brand-text-white" href="{{url('home')}}" aria-label="{{ 'global.app.name'|trans }}">
-                    {{include('TemplatesSITECore/Front/_logo_default.html.twig')}}
+                    {{include('TemplatesSITECore/FrontSimple/_logo_default.html.twig')}}
                 </a>
                 <!-- End White Logo -->
                 {% else %}
                 <!-- Default Logo -->
                 <a class="d-none d-lg-flex navbar-brand u-header__navbar-brand u-header__navbar-brand-center u-header__navbar-brand-text-white" href="{{url('home')}}" aria-label="{{ 'global.app.name'|trans }}">
-                    {{include('TemplatesSITECore/Front/_logo_dark.html.twig')}}
+                    {{include('TemplatesSITECore/FrontSimple/_logo_dark.html.twig')}}
                 </a>
                 <!-- End Default Logo -->
                 {% endif %}
