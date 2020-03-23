@@ -1,7 +1,7 @@
 {% extends 'TemplatesSITELogin/Front/base.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore_entry_link_tags('login_confirmed_account', null, 'frontThemeConfig') }}
+    {{ encore_entry_link_tags('login_confirmed_account', null, 'frontEntryConfig') }}
 {% endblock %}
 {% block title %}Account Confirmed!{% endblock %}
 {% block description %}{% endblock %}
@@ -37,5 +37,5 @@
 {% endblock %}
 {% block javascripts %}
 {{ parent() }}
-{{ encore_entry_script_tags('login_confirmed_account', null, 'frontThemeConfig') }}
+{{ encore_entry_script_tags('login_confirmed_account', null, 'frontEntryConfig') }}
 {% endblock %}
