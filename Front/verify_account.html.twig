@@ -1,7 +1,7 @@
 {% extends 'TemplatesSITELogin/Front/base.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore_entry_link_tags('login_verify_account', null, 'frontEntryConfig') }}
+    {{ encore_entry_link_tags('login', null, 'frontEntryConfig') }}
 {% endblock %}
 {% block title %}Check email to confirm account{% endblock %}
 {% block description %}{% endblock %}
@@ -38,5 +38,5 @@
 {% endblock %}
 {% block javascripts %}
 {{ parent() }}
-{{ encore_entry_script_tags('login_verify_account', null, 'frontEntryConfig') }}
+{{ encore_entry_script_tags('login', null, 'frontEntryConfig') }}
 {% endblock %}

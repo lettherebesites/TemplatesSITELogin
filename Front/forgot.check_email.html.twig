@@ -1,7 +1,7 @@
 {% extends 'TemplatesSITELogin/Front/base.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore_entry_link_tags('login_forgot_check_email', null, 'frontEntryConfig') }}
+    {{ encore_entry_link_tags('login', null, 'frontEntryConfig') }}
 {% endblock %}
 {% block title %}Check Your Email | Forgot Password{% endblock %}
 {% block description %}{% endblock %}
@@ -39,5 +39,5 @@
 {% endblock %}
 {% block javascripts %}
 {{ parent() }}
-{{ encore_entry_script_tags('login_forgot_check_email', null, 'frontEntryConfig') }}
+{{ encore_entry_script_tags('login', null, 'frontEntryConfig') }}
 {% endblock %}
