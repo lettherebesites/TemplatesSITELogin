@@ -1,18 +1,18 @@
 {% extends 'TemplatesSITELogin/Front/base.html.twig' %}
-{% block stylesheets %}
-    {{ parent() }}
-    {{ encore_entry_link_tags('login', null, 'frontEntryConfig') }}
-{% endblock %}
 {% block title %}Register{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+{{ encore_entry_link_tags('login', null, 'frontEntryConfig') }}
+{% endblock %}
 {% block description %}Create an account{% endblock %}
+{% block keywords %}{% endblock %}
 {% block header %}{% set dark = true %}{{ parent() }}{% endblock %}
 {% block content %}
-    <!-- ========== MAIN ========== -->
-    <main id="content" role="main">
-        <!-- Form -->
-        <div class="d-flex align-items-center position-relative height-lg-100vh">
-            {{ include('TemplatesSITELogin/Front/_aside.html.twig') }}
-        </div>
+<!-- ========== MAIN ========== -->
+<main id="content" role="main">
+    <!-- Form -->
+    <div class="d-flex align-items-center position-relative height-lg-100vh">
+        {{ include('TemplatesSITELogin/Front/_aside.html.twig') }}
 
         <div class="container">
             <div class="row no-gutters">
@@ -94,7 +94,6 @@
                     <!-- End Form -->
                 </div>
             </div>
-        </div>
     </div>
     <!-- End Form -->
 </main>
