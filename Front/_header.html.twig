@@ -21,11 +21,11 @@
                 <div class="ml-auto">
                     {% if app.request.attributes.get('_route') == "site_login_login" %}
                         <a class="btn btn-sm btn-primary text-white-hover transition-3d-hover" href="{{ path('site_login_register') }}">
-                            Register
+                            {{'site.login.login.cta_register'|trans}}  <i class="fas fa-user-plus"></i>
                         </a>
                     {% else %}
                         <a class="btn btn-sm btn-primary text-white-hover transition-3d-hover" href="{{path('site_login_login')}}">
-                            Sign In <i class="fas fa-sign-in-alt"></i>
+                           {{'site.login.register.cta_login'|trans}} <i class="fas fa-sign-in-alt"></i>
                         </a>
                     {% endif %}
                 </div>
