@@ -91,11 +91,11 @@
                         <div class="row align-items-center mb-5">
                             <div class="col-6">
                                 <span class="small text-muted">{{ 'site.login.login.dont_have_account'|trans }}</span>
-                                <a class="small" href="{{ path( register_route, app.request.query.all) }}">{{ 'site.login.login.cta_register'|trans }}</a>
+                                <a class="small" href="{{ path( register_route, app.request.query.all) }}">{{ 'site.login.login.cta_register'|trans }} <i class="fas fa-user-plus"></i></a>
                             </div>
 
                             <div class="col-6 text-right">
-                                <button id="_submit" name="_submit" class="btn btn-primary text-white-hover transition-3d-hover" type="submit">{{ security.login.submit|default('Log In')|trans }}</button>
+                                <button id="_submit" name="_submit" class="btn btn-primary text-white-hover transition-3d-hover" type="submit">{{ 'site.login.login.submit_label'|trans }} <i class="fas fa-sign-in-alt"></i></button>
                             </div>
                         </div>
                     </form>
