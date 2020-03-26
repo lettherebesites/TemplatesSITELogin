@@ -26,7 +26,6 @@
                         {% for msg in messages %}
                             <div class="alert alert-{{ type }}">{{ msg }}</div>
                         {% endfor %}
-                        {{ form_widget(form._token) }}
                     {% endfor %}
                         <!-- Title -->
                         <div class="mb-7">
@@ -90,6 +89,7 @@
                         </div>
                     </div>
                     <!-- End Button -->
+                    {{ form_widget(form._token) }}
                     {{ form_end(form, {'render_rest': false}) }}
                     <!-- End Form -->
                 </div>
