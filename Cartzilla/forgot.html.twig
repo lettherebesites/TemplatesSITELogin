@@ -1,0 +1,39 @@
+{% extends 'TemplatesSITELogin/Cartzilla/base.html.twig' %}
+{% block title %}Forgot Password{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block content %}
+    <div class="container py-5 mb-lg-3">
+        <div class="row justify-content-center pt-lg-4">
+            <div class="col-sm-9">
+                <div class="card border-0 box-shadow">
+                    <div class="card-body">
+                        <!-- SVG Icon -->
+                        <figure id="SVGaccount" class="svg-preloader mb-5 text-center">
+                            <img class="js-svg-injector" src="{{ asset('svg/illustrations/get-answered.svg', 'cartzilla') }}" alt="Check your email"
+                                 data-parent="#SVGaccount" style="max-height: 200px;">
+                        </figure>
+                        <!-- End SVG Icon -->
+                        <h1 class="text-center">{{ 'site.login.forgot.heading' | trans }}</h1>
+                        <p class="text-center">{{ 'site.login.forgot.subheading' | trans }}</p>
+                        <form method="post" class="needs-validation" novalidate>
+                            <div class="js-form-message form-group">
+                                <label class="form-label" for="user_username">{{ 'global.form.username.label' | trans }}</label>
+                                <input id="user_username" name="username" required="required" type="text" class="form-control" placeholder="{{ 'global.form.username.placeholder' | trans }}" aria-label="{{ 'global.form.username.label' | trans }}" required="" data-msg="Please enter your username or email address." data-error-class="u-has-error" data-success-class="u-has-success" aria-required="true" required="required">
+                            </div>
+                            <div class="row align-items-center mt-4 mb-3">
+                                <div class="col-4 col-sm-6">
+                                    <a href="{{ login_url }}">{{ 'site.login.forgot.cta_login' | trans }}</a>
+                                </div>
+
+                                <div class="col-8 col-sm-6 text-right">
+                                    <button type="submit" class="btn btn-primary">{{ 'site.login.forgot.submit_label' | trans }}</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

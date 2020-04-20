@@ -1,0 +1,10 @@
+{% extends 'TemplatesSITECore/Cartzilla/base.html.twig' %}
+{% block body_container %}
+<body class="toolbar-enabled">
+{% block body %}{{ parent() }}{% endblock %}
+{% block javascripts %}{{ parent() }}{% endblock %}
+</body>
+{% endblock %}
+{% block header %}{{ include('TemplatesSITELogin/Cartzilla/_header.html.twig') }}{% endblock %}
+{% block content %}{{ parent() }}{% endblock %}
+{% block footer %}{{ include('TemplatesSITELogin/Cartzilla/_footer.html.twig') }}{% endblock %}
