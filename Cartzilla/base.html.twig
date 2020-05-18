@@ -1,10 +1,20 @@
 {% extends 'TemplatesSITECore/Cartzilla/base.html.twig' %}
 {% block body_container %}
 <body class="toolbar-enabled">
-{% block body %}{{ parent() }}{% endblock %}
+{% block body %}
+    {% block header %}{{ include('TemplatesSITELogin/Cartzilla/_header.html.twig') }}{% endblock %}
+<!-- ========== MAIN ========== -->
+<div class="container py-4 py-lg-5 my-4">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 offset-md-1">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>
+<!-- ========== END MAIN ========== -->
+    {% block footer %}{{ include('TemplatesSITELogin/Cartzilla/_footer.html.twig') }}{% endblock %}
+{% endblock %}
 {% block javascripts %}{{ parent() }}{% endblock %}
 </body>
 {% endblock %}
-{% block header %}{{ include('TemplatesSITELogin/Cartzilla/_header.html.twig') }}{% endblock %}
-{% block content %}{{ parent() }}{% endblock %}
-{% block footer %}{{ include('TemplatesSITELogin/Cartzilla/_footer.html.twig') }}{% endblock %}
+

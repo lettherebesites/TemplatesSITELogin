@@ -3,28 +3,20 @@
 {% block description %}{% endblock %}
 {% block keywords %}{% endblock %}
 {% block content %}
-<!-- ========== MAIN ========== -->
-<div class="container py-4 py-lg-5 my-4">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card border-0 box-shadow">
-                <div class="card-body text-center">
-                    <!-- SVG Icon -->
-                    <figure id="SVGaccount" class="svg-preloader mb-5">
-                        <img class="js-svg-injector" src="{{ asset('svg/illustrations/verified-user.svg', 'cartzilla') }}" alt="Image representing creating an account"
-                             data-parent="#SVGaccount" style="max-height: 200px;">
-                    </figure>
-                    <!-- End SVG Icon -->
-                    <!-- Title -->
-                    <div class="mb-5">
-                        <h1 class="h2 font-weight-normal">{{ 'site.login.confirmed_account.heading' | trans }}</h1>
-                        <p>{{ 'site.login.confirmed_account.subheading' | trans({'%path.login%': path(login_route)}) | raw }}</p>
-                    </div>
-                    <!-- End Title -->
-                </div>
+    <div class="card border-0 box-shadow">
+        <div class="card-body text-center">
+            <!-- SVG Icon -->
+            <figure id="SVGaccount" class="svg-preloader mb-5">
+                <img class="js-svg-injector" src="{{ asset('svg/illustrations/verified-user.svg', 'cartzilla') }}" alt="Image representing creating an account"
+                     data-parent="#SVGaccount" style="max-height: 200px;">
+            </figure>
+            <!-- End SVG Icon -->
+            <!-- Title -->
+            <div class="mb-5">
+                <h1 class="h2 font-weight-normal">{{ 'site.login.confirmed_account.heading' | trans }}</h1>
+                <p>{{ 'site.login.confirmed_account.subheading' | trans({'%path.login%': path(login_route)}) | raw }}</p>
             </div>
+            <!-- End Title -->
         </div>
     </div>
-</div>
-<!-- ========== END MAIN ========== -->
 {% endblock %}

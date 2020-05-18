@@ -3,24 +3,18 @@
 {% block description %}{% endblock %}
 {% block keywords %}{% endblock %}
 {% block content %}
-    <div class="container py-5 mb-lg-3">
-        <div class="row justify-content-center pt-lg-4">
-            <div class="col-sm-9">
-                <div class="card border-0 box-shadow">
-                    <div class="card-body text-center">
-                        <!-- SVG Icon -->
-                        <figure id="SVGaccount" class="svg-preloader mb-5">
-                            <img class="js-svg-injector" src="{{ asset('svg/illustrations/create-account.svg', 'cartzilla') }}" alt="Check your email"
-                                 data-parent="#SVGaccount" style="max-height: 200px;">
-                        </figure>
-                        <!-- End SVG Icon -->
-                        <h1 class="text-center">{{ 'site.login.forgot_check.heading' | trans }}</h1>
-                        <p class="text-center">{{ 'site.login.forgot_check.subheading' | trans }}</p>
+    <div class="card border-0 box-shadow">
+        <div class="card-body text-center">
+            <!-- SVG Icon -->
+            <figure id="SVGaccount" class="svg-preloader mb-5">
+                <img class="js-svg-injector" src="{{ asset('svg/illustrations/create-account.svg', 'cartzilla') }}" alt="Check your email"
+                     data-parent="#SVGaccount" style="max-height: 200px;">
+            </figure>
+            <!-- End SVG Icon -->
+            <h1 class="text-center">{{ 'site.login.forgot_check.heading' | trans }}</h1>
+            <p class="text-center">{{ 'site.login.forgot_check.subheading' | trans }}</p>
 
-                        <a class="btn btn-primary" href="{{ path('home') }}">{{ 'site.login.forgot_check.cta_label' | trans }} <i class="fas fa-home"></i></a>
-                    </div>
-                </div>
-            </div>
+            <a class="btn btn-primary" href="{{ path('home') }}">{{ 'site.login.forgot_check.cta_label' | trans }} <i class="fas fa-home"></i></a>
         </div>
     </div>
 {% endblock %}
