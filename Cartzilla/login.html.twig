@@ -9,7 +9,11 @@
             <h2 class="h4 mb-1">{{'site.login.login.heading_prefix'|trans}} <span class="font-weight-semi-bold">{{'site.login.login.heading_postfix'|trans}}</span></h2>
             <p>{{ 'site.login.login.subheading'|trans }}</p>
             <!-- Form -->
+            {% if register_type == 'phone' %}
+            <form action="{{ path('site_login_otp', app.request.query.all) }}" id="form-login" method="POST" class="needs-validation" novalidate>
+            {% else %}
             <form action="{{ path(login_route, app.request.query.all) }}" id="form-login" method="POST" class="needs-validation" novalidate>
+            {% endif %}
                 {% for type, messages in app.flashes %}
                     {% for msg in messages %}
                         <div class="alert alert-{{ type }}">{{ msg }}</div>
@@ -19,58 +23,80 @@
                     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                 {% endif %}
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
-                <!-- Form Group -->
-                <div class="js-form-message form-group">
-                    <label class="form-label" for="login_username">
+                    {% if register_type == 'phone' %}
+                    <div class="row">
+                            <!-- Form Group -->
+                        <div class="js-form-message form-group col-10 col-md-8 col-lg-6">
+                            <label class="form-label" for="login_username">
+                                <span class="d-flex justify-content-between align-items-center">
+                                    {{ 'global.form.phone_number.label'|trans }}
+                                </span>
+                            </label>
+                            <input id="username" type="text" name="_username" value="{{ last_username }}" class="form-control"
+                                   aria-label= "+1 000-000-0000"
+                                   autocomplete="username"
+                                   autofocus
+                                   data-msg="Please enter a valid phone number."
+                                   data-error-class="u-has-error"
+                                   data-success-class="u-has-success"
+                                   placeholder="+1 000-000-0000"
+                                   required="required">
+                        </div>
+                    </div>
+                        <!-- End Form Group -->
+                        {% else %}<!-- Form Group -->
+                            <div class="js-form-message form-group">
+                                <label class="form-label" for="login_username">
                                 <span class="d-flex justify-content-between align-items-center">
                                     {{ 'global.form.username.label'|trans }}
                                 </span>
-                    </label>
-                    <a class="float-right" href="{{ path( forgot_route, app.request.query.all) }}">{{ 'site.login.login.forgot'|trans }}</a>
-                    <input id="username" type="text" name="_username" value="{{ last_username }}" class="form-control"
-                           aria-label="{{ 'global.form.username.label'|trans }}"
-                           autocomplete="username"
-                           autofocus
-                           data-msg="Please enter your name."
-                           data-error-class="u-has-error"
-                           data-success-class="u-has-success"
-                           placeholder="{{ 'global.form.username.placeholder'|trans }}"
-                           required="required">
-                </div>
-                <!-- End Form Group -->
+                                </label>
+                                <a class="float-right" href="{{ path( forgot_route, app.request.query.all) }}">{{ 'site.login.login.forgot'|trans }}</a>
+                                <input id="username" type="text" name="_username" value="{{ last_username }}" class="form-control"
+                                       aria-label="{{ 'global.form.username.label'|trans }}"
+                                       autocomplete="username"
+                                       autofocus
+                                       data-msg="Please enter your name."
+                                       data-error-class="u-has-error"
+                                       data-success-class="u-has-success"
+                                       placeholder="{{ 'global.form.username.placeholder'|trans }}"
+                                       required="required">
+                            </div>
+                            <!-- End Form Group -->
 
-                <!-- Form Group -->
-                <div class="js-form-message form-group">
-                    <label class="form-label" for="login_password">
-                        {{ 'global.form.password.label'|trans }}
-                    </label>
-                    <input id="login_password" type="password" class="form-control" name="_password"
-                           aria-invalid="login_password"
-                           aria-label="{{ 'global.form.password.label'|trans }}"
-                           autocomplete="current-password"
-                           placeholder="{{ 'global.form.password.placeholder'|trans }}"
-                           data-msg="Your password is invalid. Please try again."
-                           data-error-class="u-has-error"
-                           data-success-class="u-has-success"
-                           required="required">
-                </div>
-                <!-- End Form Group -->
+                            <!-- Form Group -->
+                            <div class="js-form-message form-group">
+                                <label class="form-label" for="login_password">
+                                    {{ 'global.form.password.label'|trans }}
+                                </label>
+                                <input id="login_password" type="password" class="form-control" name="_password"
+                                       aria-invalid="login_password"
+                                       aria-label="{{ 'global.form.password.label'|trans }}"
+                                       autocomplete="current-password"
+                                       placeholder="{{ 'global.form.password.placeholder'|trans }}"
+                                       data-msg="Your password is invalid. Please try again."
+                                       data-error-class="u-has-error"
+                                       data-success-class="u-has-success"
+                                       required="required">
+                            </div>
+                            <!-- End Form Group -->
 
-                <!-- Checkbox -->
-                <div class="js-form-message mb-5">
-                    <div class="custom-control custom-checkbox d-flex align-items-center text-muted">
-                        <input type="checkbox" value="1" class="custom-control-input"
-                               id="_remember_me"
-                               name="_remember_me"
-                               aria-required="true">
-                        <label class="custom-control-label" for="_remember_me">
-                            <small>
-                                {{ 'site.login.login.remember_me' | trans }}
-                            </small>
-                        </label>
-                    </div>
-                </div>
-                <!-- End Checkbox -->
+                            <!-- Checkbox -->
+                            <div class="js-form-message mb-5">
+                                <div class="custom-control custom-checkbox d-flex align-items-center text-muted">
+                                    <input type="checkbox" value="1" class="custom-control-input"
+                                           id="_remember_me"
+                                           name="_remember_me"
+                                           aria-required="true">
+                                    <label class="custom-control-label" for="_remember_me">
+                                        <small>
+                                            {{ 'site.login.login.remember_me' | trans }}
+                                        </small>
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- End Checkbox -->
+                        {% endif %}
 
                 <!-- Button -->
                 <div class="row align-items-center mb-5">
@@ -87,4 +113,15 @@
             <!-- End Login Form -->
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        /* JS Plugins Init.  */
+        $(function() {
+            {% if register_type == 'phone' %}
+            $('#username').mask('+1 000-000-0000');
+            {% endif %}
+        });
+    </script>
 {% endblock %}

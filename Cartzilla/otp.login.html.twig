@@ -1,0 +1,73 @@
+{% extends 'TemplatesSITELogin/Cartzilla/base.html.twig' %}
+{% block title %}Enter you code{% endblock %}
+{% block description %}Create an account{% endblock %}
+{% block keywords %}{% endblock %}
+{% block header %}{{ parent() }}{% endblock %}
+{% block content %}
+    <div class="card border-0 box-shadow">
+        <div class="card-body">
+            <h2 class="h4 mb-1">{{ 'site.login.otp.heading_prefix'| trans }} <span class="font-weight-semi-bold">{{ 'global.app.name'|trans }}</span></h2>
+            <p>{{ 'site.login.otp.subheading' | trans }}</p>
+            <!-- Form -->
+            {{ form_start(form, {'method': 'post', 'attr': {'class': 'needs-validation w-100', 'id': 'form-otp', 'role': 'form', 'novalidate':'novalidate'}}) }}
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% for type, messages in app.flashes %}
+                {% for msg in messages %}
+                    <div class="alert alert-{{ type }}">{{ msg }}</div>
+                {% endfor %}
+            {% endfor %}
+
+            <div class="row my-5 mx-5">
+                <div class="col-2">
+                    {{ form_widget(form.digit_1) }}
+                </div>
+                <div class="col-2">
+                    {{ form_widget(form.digit_2) }}
+                </div>
+                <div class="col-2">
+                    {{ form_widget(form.digit_3) }}
+                </div>
+                <div class="col-2">
+                    {{ form_widget(form.digit_4) }}
+                </div>
+                <div class="col-2">
+                    {{ form_widget(form.digit_5) }}
+                </div>
+                <div class="col-2">
+                    {{ form_widget(form.digit_6) }}
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="row align-items-center mt-5">
+                <div class="col-6">
+                    <span class="small text-muted">{{ 'site.login.login.dont_have_account'|trans }}</span>
+                    <a class="small" href="{{ path( register_route, app.request.query.all) }}">{{ 'site.login.login.cta_register'|trans }}</a>
+                </div>
+
+                <div class="col-6 text-right">
+                    <button id="_submit" name="_submit" class="btn btn-primary text-white-hover transition-3d-hover" type="submit">{{ 'site.login.login.submit_label'|trans }} <i class="fas fa-sign-in-alt"></i></button>
+                </div>
+            </div>
+            <!-- End Button -->
+            {{ form_widget(form._token) }}
+            {{ form_end(form, {'render_rest': false}) }}
+            <!-- End Form -->
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+    <script>
+        $(document).on('keyup', function(event) {
+            let numbers = [48,49,50,51,52,53,54,55,56,57];
+            if($.inArray(event.which, numbers)){
+                $(event.target).parent().next('div').find('input').focus().select();
+            }
+        });
+
+    </script>
+{% endblock %}

@@ -1,20 +1,26 @@
-{% extends 'TemplatesSITELogin/Front/base.html.twig' %}
+{% extends 'TemplatesSITELogin/Cartzilla/base.html.twig' %}
 {% block title %}Resend Confirmation{% endblock %}
 {% block description %}{% endblock %}
 {% block keywords %}{% endblock %}
-{% block body %}
-    <div class="centered-container">
-        <form method="post" class="form-signin p-t-15">
-            <img class="mb-4" src="{{config.logo}}" alt="" width="72" height="72">
-            <h1 class="h3 mb-3 font-weight-normal">Resend Email Confirmation</h1>
-            <div class="transparent text-left">
-                <div class="input-group">
-                    <input id="user_username" name="username" required="required" type="text" class="form-control" placeholder="Enter email associated with your account." aria-label="Enter email associated with your account." aria-describedby="button-addon">
-                    <div class="input-group-append">
-                        <button class="btn btn-complete btn-outline-secondary" type="submit" id="button-addon">Submit</button>
+{% block content %}
+    <div class="card border-0 box-shadow">
+        <div class="card-body text-center">
+            <!-- SVG Icon -->
+            <figure id="SVGaccount" class="svg-preloader mb-5">
+                <img class="js-svg-injector" src="{{ asset('svg/illustrations/create-account.svg', 'cartzilla') }}" alt="Check your email"
+                     data-parent="#SVGaccount" style="max-height: 200px;">
+            </figure>
+            <!-- End SVG Icon -->
+            <h1 class="text-center">Resend Email Confirmation</h1>
+                <div class="transparent text-left">
+                    <div class="input-group">
+                        <input id="user_username" name="username" required="required" type="text" class="form-control" placeholder="Enter email associated with your account." aria-label="Enter email associated with your account." aria-describedby="button-addon">
+                        <div class="input-group-append">
+                            <button class="btn btn-complete btn-outline-secondary" type="submit" id="button-addon">Submit</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 {% endblock %}
