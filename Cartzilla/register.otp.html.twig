@@ -4,13 +4,12 @@
 {% block keywords %}{% endblock %}
 {% block header %}{{ parent() }}{% endblock %}
 {% block content %}
-    {% set currentParams = app.request.attributes.get('_route_params') | merge(app.request.query) %}
     <div class="card border-0 box-shadow">
         <div class="card-body">
             <h2 class="h4 mb-1">{{ 'site.login.register.heading_prefix' | trans }} <span class="font-weight-semi-bold">{{ 'global.app.name'|trans }}</span></h2>
             <p>{{ 'site.login.register.subheading' | trans }}</p>
             <!-- Form -->
-            {{ form_start(form, {'method': 'post', 'action': path(register_route, currentParams), 'attr': {'class': 'needs-validation', 'id': 'form-register', 'role': 'form', 'novalidate':'novalidate'}}) }}
+            {{ form_start(form, {'method': 'post', 'action': path(register_route), 'attr': {'class': 'needs-validation', 'id': 'form-register', 'role': 'form', 'novalidate':'novalidate'}}) }}
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
@@ -21,20 +20,34 @@
                 {% endfor %}
             {% endfor %}
 
-            <div class="js-form-message form-group">
-                {{ form_label(form.username, null, {"label_attr": {"class": "form-label"}}) }}
-                {{ form_widget(form.username, { "attr":{ "aria-label":"Username/Email", "required":"required", "data-msg":"Please enter a valid email address.", "data-error-class":"u-has-error", "data-success-class":"u-has-success"}}) }}
-            </div>
+            {% if register_type == 'phone' %}
+                <div class="row justify-content-center">
+                    <div class="col-2 col-md-1 text-center my-4">
+                        <span class="font-size-xl">+1</span>
+                    </div>
+                    <div class="js-form-message form-group col-10 col-md-8 col-lg-6 pl-0">
+                        {{ form_label(form.username, null, {"label_attr": {"class": "form-label"}}) }}
+                        <br class="clearfix">{{ form_widget(form.username, { "attr":{ class: "form-control-lg ", "placeholder":"000-000-0000", "aria-label": "000-000-0000", "required":"required", "data-msg":"Please enter a valid phone number.", "data-error-class":"u-has-error", "data-success-class":"u-has-success"}}) }}
+                    </div>
+                </div>
+            {% else %}
+                <div class="js-form-message form-group">
+                    {{ form_label(form.username, null, {"label_attr": {"class": "form-label"}}) }}
+                    {{ form_widget(form.username, { "attr":{ "aria-label":"Username/Email", "required":"required", "data-msg":"Please enter a valid email address.", "data-error-class":"u-has-error", "data-success-class":"u-has-success"}}) }}
+                </div>
+            {% endif %}
 
-            <div class="js-form-message form-group">
-                {{ form_label(form.plainPassword.first, null, {"label_attr": {"class": "form-label"}})  }}
-                {{ form_widget(form.plainPassword.first, { "attr":{ "aria-label":"********", "placeholder":"********", "required":"required", "data-msg":"Your password is invalid. Please try again.", "data-error-class":"u-has-error", "data-success-class":"u-has-success"}}) }}
-            </div>
+            {% if form.plainPassword %}
+                <div class="js-form-message form-group">
+                    {{ form_label(form.plainPassword.first, null, {"label_attr": {"class": "form-label"}})  }}
+                    {{ form_widget(form.plainPassword.first, { "attr":{ "aria-label":"********", "placeholder":"********", "required":"required", "data-msg":"Your password is invalid. Please try again.", "data-error-class":"u-has-error", "data-success-class":"u-has-success"}}) }}
+                </div>
 
-            <div class="js-form-message form-group">
-                {{ form_label(form.plainPassword.second, null, {"label_attr": {"class": "form-label"}})  }}
-                {{ form_widget(form.plainPassword.second, { "attr":{ "aria-label":"********", "placeholder":"********", "required":"required", "data-msg":"Password does not match the confirm password.", "data-error-class":"u-has-error", "data-success-class":"u-has-success"}}) }}
-            </div>
+                <div class="js-form-message form-group">
+                    {{ form_label(form.plainPassword.second, null, {"label_attr": {"class": "form-label"}})  }}
+                    {{ form_widget(form.plainPassword.second, { "attr":{ "aria-label":"********", "placeholder":"********", "required":"required", "data-msg":"Password does not match the confirm password.", "data-error-class":"u-has-error", "data-success-class":"u-has-success"}}) }}
+                </div>
+            {% endif %}
 
             <!-- Checkbox -->
             <div class="js-form-message mb-5">
@@ -77,11 +90,18 @@
     </div>
 {% endblock %}
 {% block javascripts %}
-{{ parent() }}
-<script>
+    {{ parent() }}
+    <script>
         /* JS Plugins Init.  */
         $(function() {
             $('#form-register').validate();
+            {% if register_type == 'phone' %}
+            $('#{{ form.username.vars.id }}').mask('000-000-0000');
+            $( "#{{ form.username.vars.id }}" ).rules( "add", {
+                minlength: 10
+            });
+            {% endif %}
+            {% if form.plainPassword %}
             $('#{{ form.plainPassword.first.vars.id }}').rules( 'add', {
                 required: true,
                 minlength: 8,
@@ -93,6 +113,7 @@
                     equalTo: "Sorry this doesn't match your password.",
                 }
             });
+            {% endif %}
         });
     </script>
 {% endblock %}
