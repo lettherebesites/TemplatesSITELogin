@@ -4,6 +4,7 @@
 {% block keywords %}{% endblock %}
 {% block header %}{{ parent() }}{% endblock %}
 {% block content %}
+<div class=" my-5 py-5 ">
     <div class="card border-0 box-shadow">
         <div class="card-body">
             <h2 class="h4 mb-1">{{ 'site.login.register.heading_prefix' | trans }} <span class="font-weight-semi-bold">{{ 'global.app.name'|trans }}</span></h2>
@@ -88,6 +89,7 @@
             <!-- End Form -->
         </div>
     </div>
+</div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}

@@ -4,6 +4,7 @@
 {% block keywords %}{% endblock %}
 {% block header %}{{ parent() }}{% endblock %}
 {% block content %}
+<div class=" my-5 py-3">
     {% set currentParams = app.request.attributes.get('_route_params') | merge(app.request.query) %}
     <div class="card border-0 box-shadow">
         <div class="card-body">
@@ -75,6 +76,7 @@
             <!-- End Form -->
         </div>
     </div>
+</div>
 {% endblock %}
 {% block javascripts %}
 {{ parent() }}
