@@ -20,23 +20,12 @@
                     <div class="alert alert-{{ type }}">{{ msg }}</div>
                 {% endfor %}
             {% endfor %}
-
-            {% if register_type == 'phone' %}
-                <div class="row justify-content-center">
-                    <div class="col-2 col-md-1 text-center my-4">
-                        <span class="font-size-xl">+1</span>
-                    </div>
-                    <div class="js-form-message form-group col-10 col-md-8 col-lg-6 pl-0">
-                        {{ form_label(form.username, null, {"label_attr": {"class": "form-label"}}) }}
-                        <br class="clearfix">{{ form_widget(form.username, { "attr":{ class: "form-control-lg ", "placeholder":"000-000-0000", "aria-label": "000-000-0000", "required":"required", "data-msg":"Please enter a valid phone number.", "data-error-class":"u-has-error", "data-success-class":"u-has-success"}}) }}
-                    </div>
-                </div>
-            {% else %}
-                <div class="js-form-message form-group">
+            <div class="row">
+                <div class="js-form-message form-group col-12 col-sm-10 col-md-8 col-lg-6">
                     {{ form_label(form.username, null, {"label_attr": {"class": "form-label"}}) }}
-                    {{ form_widget(form.username, { "attr":{ "aria-label":"Username/Email", "required":"required", "data-msg":"Please enter a valid email address.", "data-error-class":"u-has-error", "data-success-class":"u-has-success"}}) }}
+                    <br class="clearfix">{{ form_widget(form.username, { "attr":{ class: "form-control", autocomplete="off", "placeholder":"+1 000-000-0000", "aria-label": "+1 000-000-0000", "required":"required", "data-msg":"Please enter a valid phone number.", "data-error-class":"u-has-error", "data-success-class":"u-has-success"}}) }}
                 </div>
-            {% endif %}
+            </div>
 
             {% if form.plainPassword %}
                 <div class="js-form-message form-group">
@@ -98,7 +87,7 @@
         $(function() {
             $('#form-register').validate();
             {% if register_type == 'phone' %}
-            $('#{{ form.username.vars.id }}').mask('000-000-0000');
+            $('#{{ form.username.vars.id }}').mask('+1 000-000-0000');
             $( "#{{ form.username.vars.id }}" ).rules( "add", {
                 minlength: 10
             });
