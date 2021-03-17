@@ -6,7 +6,7 @@
         {% if config.template_alter_code %}
             {% include 'TemplatesSITECore/Cartzilla/'~config.template_alter_code~'/_header.html.twig'  ignore missing  %}
         {% else %}
-            {{ include('TemplatesSITECore/Cartzilla/_header.html.twig') }}
+            {{ include('TemplatesSITECore/Cartzilla/_header.simple.html.twig', {light_header: true}) }}
         {% endif %}
     {% endblock %}
 <!-- ========== MAIN ========== -->
